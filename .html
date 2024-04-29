@@ -1,0 +1,28 @@
+Add navigation links in layout (app/views/layouts/application.html.erb):
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task Manager</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+
+<nav>
+  <% if user_signed_in? %>
+    <%= link_to 'My Tasks', tasks_path %>
+    <%= link_to 'New Task', new_task_path %>
+    <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to 'Sign in', new_user_session_path %>
+    <%= link_to 'Sign up', new_user_registration_path %>
+  <% end %>
+</nav>
+
+<%= yield %>
+
+</body>
+</html>
