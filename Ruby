@@ -1,0 +1,11 @@
+Create a new Rails application:
+rails new task_manager
+Generate the Task model:
+rails generate model Task title:string description:text due_date:date completed:boolean user:references
+Generate the User model using Devise:
+rails generate devise:install
+rails generate devise User
+Run migrations:
+rails db:migrate
+Create the Task controller:
+rails generate controller Tasks
